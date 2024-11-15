@@ -12,3 +12,5 @@
   ```
 
   Run this in a live/local server.
+
+  Access the deployed website ![here](https://padingo-webassistant.netlify.app/).
