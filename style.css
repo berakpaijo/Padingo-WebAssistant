@@ -59,6 +59,7 @@
   background: rgba(131, 165, 152, 1);
   border: solid 4px;
   border-color: #8ec07c;
+  cursor: pointer;
 }
 
 .main .input .talk  {
@@ -82,6 +83,7 @@
   color: #fabd2f;
   font-size: 15px;
   margin-right: 20px;
+  cursor: text;
 }
 
 .main .image-container .sosmed {
@@ -101,4 +103,24 @@
   cursor: pointer;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+@media (max-width:600){
+  .main .input {
+    width: 38vw;
+    height: 45px;
+    border-radius: 20px;
+  }
+
+  .main .imput .talk i {
+    font-size: 22;
+  }
+
+  .main .input .content {
+    font-size: 17;
+  }
+
+  main .input .image-container .h1 {
+    font-size: 50px;
+  }
 }

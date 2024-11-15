@@ -1,4 +1,4 @@
-const btn = document.querySelector('.talk');
+const btn = document.querySelector('.input');
 const content = document.querySelector('.content');
 
 /* Social Media */
