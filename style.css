@@ -21,26 +21,32 @@
   justify-content: center;
 }
 
+.main .say {
+  margin-top: 7px;
+  margin-bottom: 60px;
+  color: #ebdbb2;
+  font-weight: bold;
+}
+
 .main .ll {
   display: flex;
   justify-content: center;
   color: #ebdbb2;
   text-align: center;
-  margin-top: 210px;
-  /* margin-bottom: 40px; */
+  margin-top: 60px;
   font-size: 15px;
 }
 
 .main .image-container {
-  margin-top: 130px;
-  padding: 10px;
+  margin-top: 30px;
+  padding: 8px;
 }
 
 .main .image-container h1 {
   color: #fbf1c7;
   text-align: center;
   margin-bottom: 10px;
-  font-size: 60px;
+  font-size: 75px;
 }
 
 .main .image-container p {
@@ -50,13 +56,14 @@
 }
 
 .main .input {
+
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40vw;
   height: 50px;
   border-radius: 20px;
-  background: rgba(131, 165, 152, 1);
+  background: #83a598;
   border: solid 4px;
   border-color: #8ec07c;
   cursor: pointer;
@@ -105,6 +112,30 @@
   margin-left: 10px;
 }
 
+.main .faq-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .faq-container .faq-content {
+  margin-top: 30px;
+  margin-right: 15px;
+  margin-left: 15px;
+  display: block;
+  padding: 15px 25px;
+  background-color: #fbf1c7; 
+  color: #282828; 
+  border: solid 8px #8ec07c; 
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  width: 400px;
+  height: 350px;
+}
+
 @media (max-width:600){
   .main .input {
     width: 38vw;
@@ -120,7 +151,11 @@
     font-size: 17;
   }
 
-  main .input .image-container .h1 {
+  .main .input .image-container .h1 {
     font-size: 50px;
+  }
+
+  .main .faq-container .faq-content {
+    height: 700px;
   }
 }
