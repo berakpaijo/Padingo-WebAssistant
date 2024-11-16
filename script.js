@@ -36,6 +36,7 @@ function speak(sentence) {
     window.speechSynthesis.speak(text_speak);
 }
 
+/* Custom greeting */
 function wishMe() {
     var day = new Date();
     var hr = day.getHours();
@@ -65,6 +66,7 @@ btn.addEventListener('click', ()=>{
     recognition.start();
 })
 
+/* Custom message */
 function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
 
