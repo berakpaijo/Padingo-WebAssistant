@@ -140,7 +140,27 @@
   cursor: pointer;
 }
 
-@media (max-width : 576px) { 
+@media (max-width: 1200px) {
+  .main .faq-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: left; 
+  }
+
+  .main .say {
+    margin-top: 0.02vw;
+    margin-bottom: 30px;
+  }
+
+  .main .ll {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) { 
   .main .image-container h1 {
     font-size: 40px;
   }
