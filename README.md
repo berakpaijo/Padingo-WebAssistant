@@ -6,7 +6,7 @@
   ## DOCUMENTATION
 
   ### REQUIREMENTS
-    - A browser with working text to speech.
+    - A browser with working text-to-speech.
     - Any code editor that.
     - Live/Local server.
 
@@ -123,8 +123,8 @@
   ## Finishing
   Run the project on a live/local server.
 
-  Project's deployed website: [padingo-webassistant.netlify.app](https://padingo-webassistant.netlify.app)
+  The project's deployed website is [padingo-webassistant.netlify.app](https://padingo-webassistant.netlify.app)
 
-  Thank you for reading the entire documentation and also using the project! There will be no license regarding, since this project is just a simple project and is made open-source by me because I want people to not only use the already finished product but also use the entirity of the codebase. This project is made for a coding competition in Indonesia that focuses on high-school, junior high-school, and elementary school.
+  Thank you for reading the entire documentation and using the project! There will be no license since this project is just a simple project. I made it open-source because I want people to not only use the already finished product but also the entirety of the codebase. This project is made for a coding competition in Indonesia that focuses on high school, junior high school, and elementary school.
 
-  credits: @azzamalfaruq062 @reddevill007
+  credits: [@azzamalfaruq062](https://github.com/azzamalfaruq062) [@reddevill007](https://github.com/reddevill007/reddevill007)
