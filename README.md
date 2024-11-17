@@ -1,10 +1,15 @@
 # PADINGO VIRTUAL WEB ASSISTANT
   A web-based virtual assistant made by me, LordPaijo.
 
-  [![youtube video](https://img.youtube.com/vi/eeAdXy7NGGU/0.jpg)](https://www.youtube.com/watch?v=eeAdXy7NGGU)
+  ![](https://github.com/berakpaijo/Padingo-WebAssistant/blob/main/screenshots/ss-0.jpeg)
+
+  ![](https://github.com/berakpaijo/Padingo-WebAssistant/blob/main/screenshots/ss-1.jpeg)
 
   ## DOCUMENTATION
 
+  ### A Youtube video of testing the project
+  [![youtube video](https://img.youtube.com/vi/eeAdXy7NGGU/0.jpg)](https://www.youtube.com/watch?v=eeAdXy7NGGU)
+  
   ### REQUIREMENTS
     - A browser with working text-to-speech.
     - Any code editor that.
