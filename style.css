@@ -13,7 +13,6 @@
   width: 100%;
   background-image: url("bg.jpg");
   background-size: cover;
-  background-repeat: repeat;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -56,7 +55,6 @@
 }
 
 .main .input {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +111,6 @@
 }
 
 .main .faq-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,24 +133,57 @@
   font-size: 16px;
   width: 425px;
   height: 350px;
-
+  text-align: left;
 }
 
 .main .faq-container .faq-content a {
   cursor: pointer;
 }
 
-@media (max-width : 600px) { 
+@media (max-width : 576px) { 
+  .main .image-container h1 {
+    font-size: 40px;
+  }
+
+  .main .image-container p {
+    font-size: 14px;
+  }
+
   .main .faq-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    text-align: center; 
+    text-align: left; 
   }
 
   .main .faq-container .faq-content {
-    display: block;
-    font-size: auto;
+    max-width: 350px;
+    max-height: 250px;
+    font-size: 12px;
     padding: 12px 18px;
-    width: fit-content;
-    height: fit-content;
+  }
+
+  .main .input {
+    width: 16rem;
+    height: 50px;
+    margin-bottom: 7.5%;
+    border-radius: 20px;
+  }
+
+  .main .say {
+    margin-top: 0.02vw;
+    margin-bottom: 30px;
+    color: #ebdbb2;
+    font-weight: bold;
+  }
+
+  main .image-container .sosmed button {
+    font-size: 15px;
+  }
+
+  .main .ll {
+    margin-top: 40px;
+    margin-bottom: 10px;
   }
 }
