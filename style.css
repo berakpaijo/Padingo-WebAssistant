@@ -174,8 +174,7 @@
   .main .say {
     margin-top: 0.02vw;
     margin-bottom: 30px;
-    color: #ebdbb2;
-    font-weight: bold;
+    font-size: 12px;
   }
 
   main .image-container .sosmed button {
