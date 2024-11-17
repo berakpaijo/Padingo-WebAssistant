@@ -129,11 +129,15 @@
   color: #282828; 
   border: solid 8px #8ec07c; 
   border-radius: 4px;
-  cursor: pointer;
+  cursor: auto;
   font-size: 16px;
   width: 100%;
   width: 400px;
   height: 350px;
+}
+
+.main .faq-container .faq-content a {
+  cursor: pointer;
 }
 
 @media (max-width:600){
