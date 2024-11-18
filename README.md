@@ -132,6 +132,6 @@
 
   Thank you for reading the entire documentation and using the project! There will be no license since this project is just a simple project. I made it open-source because I want people to not only use the already finished product but also the entirety of the codebase. This project is made for a coding competition in Indonesia that focuses on high school, junior high school, and elementary school.
 
-  credits: [@azzamalfaruq062](https://github.com/azzamalfaruq062) [@reddevill007](https://github.com/reddevill007/reddevill007)
+  credits: [@azzamalfaruq062](https://github.com/azzamalfaruq062) [@reddevill007](https://github.com/reddevill007/reddevill007) [@rifky1720](https://github.com/rifky1720)
 
 
