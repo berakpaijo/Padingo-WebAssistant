@@ -8,6 +8,7 @@ const instagram = document.querySelector('#instagram');
 const threads = document.querySelector('#threads');
 const reddit = document.querySelector('#reddit');
 const youtube = document.querySelector('#youtube');
+const tiktok = document.querySelector('#tiktok');
 
 github.addEventListener('click', ()=>{
     window.open("https://www.github.com/berakpaijo/", "_blank");
@@ -23,6 +24,10 @@ reddit.addEventListener('click', ()=>{
 
 youtube.addEventListener('click', ()=>{
     window.open("https://www.youtube.com/@LordPaijo", "_blank");
+});
+
+tiktok.addEventListener('click', ()=>{
+    window.open("https://www.tiktok.com/@dikasih_info_maszeh?_t=8rUyw3CNqwG&_r=1", "_blank");
 });
 
 /* Please Follow :D */

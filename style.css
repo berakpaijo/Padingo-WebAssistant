@@ -32,7 +32,8 @@
   justify-content: center;
   color: #ebdbb2;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   font-size: 15px;
 }
 
@@ -136,8 +137,28 @@
   text-align: left;
 }
 
-.main .faq-container .faq-content a {
-  cursor: pointer;
+.main .developers {
+  max-width: 1335px;
+  max-height: 1335px;
+  display: block;
+  margin-top: 30px;
+  margin-right: 15px;
+  margin-left: 15px;
+  display: block;
+  padding: 15px 25px;
+  background-color: #fbf1c7; 
+  color: #282828; 
+  border: solid 8px #8ec07c; 
+  border-radius: 4px;
+  cursor: auto;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.main .developers .balls {
+  width: 25%;
+  height: 25%;
 }
 
 @media (max-width: 1200px) {
@@ -154,13 +175,17 @@
     margin-bottom: 30px;
   }
 
+  .main .developers {
+    width: 95%;
+  }
+
   .main .ll {
     margin-top: 30px;
     margin-bottom: 10px;
   }
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 649px) { 
   .main .image-container h1 {
     font-size: 40px;
   }
@@ -197,9 +222,15 @@
     font-size: 12px;
   }
 
-  main .image-container .sosmed button {
+  .main .image-container .sosmed button {
     font-size: 15px;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    margin-left: 5px;
   }
+
+
 
   .main .ll {
     margin-top: 40px;
