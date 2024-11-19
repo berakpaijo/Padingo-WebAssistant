@@ -161,6 +161,16 @@
   height: 25%;
 }
 
+.main .developers .iyan {
+  width: 25%;
+  height: 25%;
+}
+
+.main .developers .rifky {
+  width: 25%;
+  height: 25%;
+}
+
 @media (max-width: 1200px) {
   .main .faq-container {
     display: flex;

@@ -143,6 +143,12 @@ function speakThis(message) {
         speech.text = finalText;
     }
 
+    else if (message.includes('open tiktok')) {
+        window.open("https://https://www.reddit.com/user/LordPaijo/", "_blank");
+        const finalText = "Follow my reddit page!";
+        speech.text = finalText;
+    }
+
     else if (message.includes('open virtual class')) {
         window.open("https://virtualclass.smpm12gkb.sch.id/my/");
         const finalText = "Having some courses, huh?";
