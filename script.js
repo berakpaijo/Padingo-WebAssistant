@@ -14,6 +14,10 @@ github.addEventListener('click', ()=>{
     window.open("https://www.github.com/berakpaijo/", "_blank");
 });
 
+instagram.addEventListener('click', ()=>{
+    window.open("https://www.instagram.com/berakpaijo/", "_blank");
+});
+
 threads.addEventListener('click', ()=>{
     window.open("https://www.threads.net/@berakpaijo", "_blank");
 });
