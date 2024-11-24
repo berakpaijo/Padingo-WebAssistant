@@ -7,6 +7,10 @@
   font-family: "Roboto Mono", monospace;
 }
 
+body {
+  background: #282828;
+}
+
 .main {
   min-height: 100vh;
   position: relative;
@@ -155,8 +159,9 @@
 }
 
 .main .blog img {
-  width: 25%;
-  height: 25%;
+  width: 10%;
+  height: 10%;
+  border-radius: 100%;
 }
 
 @media (max-width: 1200px) {

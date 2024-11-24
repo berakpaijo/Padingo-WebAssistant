@@ -12,10 +12,12 @@ const tiktok = document.querySelector('#tiktok');
 
 github.addEventListener('click', ()=>{
     window.open("https://www.github.com/berakpaijo/", "_blank");
+    window.open("https://www.github.com/Rifky1720/", "_blank");
 });
 
 instagram.addEventListener('click', ()=>{
     window.open("https://www.instagram.com/berakpaijo/", "_blank");
+    window.open("https://www.instagram.com/minyaktelonmaxx", "_blank");
 });
 
 threads.addEventListener('click', ()=>{
