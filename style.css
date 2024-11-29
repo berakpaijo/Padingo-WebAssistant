@@ -8,16 +8,16 @@
 }
 
 body {
-  background: #282828;
+  background-color: #282828;
+  background-image: url("img/bg.jpg");
+  /* background-size: contain; */
+  background-position: top;
 }
 
 .main {
   min-height: 100vh;
   position: relative;
   width: 100%;
-  background-image: url("img/bg.jpg");
-  /* background-size: contain; */
-  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,14 +155,16 @@ body {
   cursor: auto;
   font-size: 16px;
   width: 100%;
-  text-align: left;
+  text-align: left; 
 }
 
 .main .blog img {
   width: 10%;
   height: 10%;
-  border-radius: 100%;
+  border-radius: 100%; 
 }
+
+/* Mobile support */
 
 @media (max-width: 1200px) {
   .main .faq-container {
