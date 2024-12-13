@@ -1,4 +1,4 @@
-const btn = document.querySelector('.input');
+const btn = document.querySelector('.talk');
 const content = document.querySelector('.content');
 
 /* Social Media */
@@ -9,6 +9,10 @@ const threads = document.querySelector('#threads');
 const reddit = document.querySelector('#reddit');
 const youtube = document.querySelector('#youtube');
 const tiktok = document.querySelector('#tiktok');
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 github.addEventListener('click', ()=>{
     window.open("https://www.github.com/berakpaijo/", "_blank");
@@ -61,6 +65,29 @@ window.addEventListener('load', ()=>{
     greetings();
 })
 
+function speak(sentence) {
+    const text_speak = new SpeechSynthesisUtterance(sentence);
+    text_speak.rate = 1;
+    text_speak.pitch = 1;
+    window.speechSynthesis.speak(text_speak);
+}
+
+/* Custom greeting */
+function greetings() {
+    var day = new Date();
+    var hr = day.getHours();
+
+    if(hr >= 0 && hr < 12)       { speak("Morning, darling. What about starting the day with asking me a question?"); }
+    else if(hr == 12)            { speak("Workshift? Ahoy! Did you have a good lunch? Becasue I do!"); }
+    else if(hr > 12 && hr <= 17) { speak("Back again to work... I didn't know you have time for me!"); }
+    else if(hr > 17 && hr <= 21) { speak("Phew... finally a time at home. What do you want, doc?"); }
+    else { speak("Hey there, sweetie... It's already too late, why don't you go to bed, sleep like a princess, and have a nice dream about me?"); }
+}
+
+window.addEventListener('load', ()=>{
+    greetings();
+});
+
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
@@ -73,12 +100,12 @@ recognition.onresult = (event) => {
 
 btn.addEventListener('click', ()=>{
     recognition.start();
-})
+});
 
 /* Custom message */
 function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
-    speech.text = "I did not understand what you said please try again";
+    speech.text = "I didn't understand what you said please try again";
 
     if (message.includes('hey') || message.includes('hello')) {
         const finalText = "Hello Boss";
@@ -202,3 +229,69 @@ function speakThis(message) {
     speech.rate = 1;
     window.speechSynthesis.speak(speech);
 }
+
+function sendMessage() {
+    const userInput = document.getElementById('userInput').value;
+    
+    if (userInput.trim() === '') return;
+
+    displayMessage('User', userInput);
+
+    const botResponse = getBotResponse(userInput);
+    
+    setTimeout(() => {
+        displayMessage('Bot', botResponse);
+    }, 1000);
+
+    document.getElementById('userInput').value = '';
+    scrollToBottom();
+}
+
+function displayMessage(sender, message) {
+    const chatlog = document.getElementById('chatlog');
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(sender.toLowerCase());
+    messageDiv.textContent = `${sender}: ${message}`;
+    
+    chatlog.appendChild(messageDiv);
+    scrollToBottom();
+}
+
+function scrollToBottom() {
+    const chatlog = document.getElementById('chatlog');
+    chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+function getBotResponse(userMessage) {
+    const responses = {
+        "hello": "Hi, there! What can I help you with?",
+        "hi": "Hello! How can I help you?",
+        "bye": "Thanks for talking with me, cya soon!",
+        "time": new Date().toLocaleString(undefined, {hour: "numeric", minute: "numeric"}),
+        "date": new Date().toLocaleString(undefined, {month: "long", day: "numeric", year: "numeric"}),
+        "wikipedia": "Opening Wikipedia",
+        "default": "Here's the answer regarding to the question."
+    };
+
+    const message = userMessage.toLowerCase();
+    const response = responses[message] || responses["default"];
+    
+    if (response === responses["default"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["wikipedia"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "")}`, "_blank");
+        }
+        delayDo();
+    }
+
+    return response;
+}
+
