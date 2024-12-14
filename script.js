@@ -277,27 +277,27 @@ function getBotResponse(userMessage) {
         delayDo();
     }
 
-    if (/^[0-9+\-*/().\s]+$/.test(userMessage)) {
-        try { return `${userMessage} = ${math.evaluate(userMessage)}`; } 
+    if (/^[0-9+\-*/().\s]+$/.test(message)) {
+        try { return `${message} = ${math.evaluate(message)}`; } 
         catch { return "Sorry, I couldn't calculate that. Please check your input."; }
     }
 
-    if (userMessage.startsWith(".echo")) {
-        return userMessage.replace(".echo", "").trim().replace(/['"]/g, "");
+    if (message.startsWith(".echo")) {
+        return message.replace(".echo", "").trim().replace(/['"]/g, "");
     }
 
-    if (userMessage === ".retrieve") {
+    if (message === ".retrieve") {
         return lastConsoledMessage || "No message has been written to console yet.";
     }
 
-    if (userMessage.startsWith(".console")) {
-        const consoleMessageedMessage = userMessage.replace(".console", "").trim().replace(/['"]/g, "");
+    if (message.startsWith(".console")) {
+        const consoleMessageedMessage = message.replace(".console", "").trim().replace(/['"]/g, "");
         lastConsoledMessage = consoleMessageedMessage;
         console.log(consoleMessageedMessage);
         return "Messaged has sucessfully written to console!"
     }
 
-    if (userMessage.toLowerCase() === ".clear") {
+    if (message.toLowerCase() === ".clear") {
         clearChatLog();
         return "Chat cleared!";
     }
@@ -313,8 +313,8 @@ function getBotResponse(userMessage) {
     };
 
     for (let cmd in externalCommands) {
-        if (userMessage.includes(cmd)) {
-            externalCommands[cmd](userMessage);
+        if (message.includes(cmd)) {
+            externalCommands[cmd](message);
             return `Opening ${cmd}...`;
         }
     }
