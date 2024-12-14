@@ -263,12 +263,12 @@ function getBotResponse(userMessage) {
         ".getchar": "Here's your random character: " + generateRandomString(1),
         ".list": list,
         ".man": manpage,
-        "default": "Here's the answer regarding to the question.",
+        "default": "Here's the answer regarding the question."
     };
 
+    const message = userMessage.toLowerCase();
     const response = responses[message] || responses["default"];
-    let stored = userMessage.replace(".echo", "").trim().replace(/['"]/g, "");
-
+    
     if (response === responses["default"]) {
         async function delayDo() {
             await delay(2000);
@@ -318,6 +318,7 @@ function getBotResponse(userMessage) {
             return `Opening ${cmd}...`;
         }
     }
+
     return response;
 }
 
