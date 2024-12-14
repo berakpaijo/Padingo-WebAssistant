@@ -263,9 +263,19 @@ function getBotResponse(userMessage) {
         ".getchar": "Here's your random character: " + generateRandomString(1),
         ".list": list,
         ".man": manpage,
+        "default": "Here's the answer regarding to the question.",
     };
 
+    const response = responses[message] || responses["default"];
     let stored = userMessage.replace(".echo", "").trim().replace(/['"]/g, "");
+
+    if (response === responses["default"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
+        }
+        delayDo();
+    }
 
     if (/^[0-9+\-*/().\s]+$/.test(userMessage)) {
         try { return `${userMessage} = ${math.evaluate(userMessage)}`; } 
@@ -308,7 +318,7 @@ function getBotResponse(userMessage) {
             return `Opening ${cmd}...`;
         }
     }
-    return responses[userMessage.toLowerCase()] || "Here's the answer regarding to the question.";
+    return response;
 }
 
 let lastConsoledMessage = '';
