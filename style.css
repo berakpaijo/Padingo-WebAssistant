@@ -10,7 +10,6 @@
 body {
   background-color: #282828;
   background-image: url("img/bg.svg");
-  /* background-size: contain; */
   background-position: top;
 }
 
@@ -132,10 +131,6 @@ body {
   justify-content: space-between;
 }
 
-#chatbox h2 {
-  position: center;
-}
-
 #chatlog {
   height: 350px;
   overflow-y: auto;
@@ -153,6 +148,27 @@ body {
   width: fit-content;
   display: inline-block;
   word-wrap: break-word;
+  white-space: pre-wrap;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 17px;
+  text-align: left;
+  color: #282828;
+}
+
+.padingo {
+  background-color: #fe8019;
+  color: #fff;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.user {
+  background-color: #b8bb26;
+  color: #000;
+  text-align: left;
+  align-self: flex-end;
 }
 
 #userInput {
@@ -170,9 +186,20 @@ body {
   justify-content: space-between;
 }
 
+.padingo {
+  background-color: #fe8019;
+  align-self: flex-start;
+}
+
+.user {
+  background-color: #b8bb26;
+  align-self: flex-end;
+  text-align: right;
+}
+
 button {
   padding: 10px;
-  width: 60px;
+  width: 120px;
   background-color: #83a598;
   color: #fabd2f;
   border: none;
@@ -238,7 +265,9 @@ button:hover {
   }
 
   #chatlog div {
-    width: 80%;
+    max-width: 80%;
+    width: fit-content;
+    font-size: 14px;
   }
 
   button {
@@ -318,7 +347,9 @@ button:hover {
   }
 
   #chatlog div {
-    width: 80%;
+    max-width: 80%;
+    width: fit-content;
+    font-size: 14px;
   }
 
   button {
