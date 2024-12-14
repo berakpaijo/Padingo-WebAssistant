@@ -1,5 +1,4 @@
-const btn = document.querySelector('.talk');
-const content = document.querySelector('.content');
+const btn = document.querySelector('#chatButtons .talk');
 
 /* Social Media */
 
@@ -9,10 +8,6 @@ const threads = document.querySelector('#threads');
 const reddit = document.querySelector('#reddit');
 const youtube = document.querySelector('#youtube');
 const tiktok = document.querySelector('#tiktok');
-
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 github.addEventListener('click', ()=>{
     window.open("https://www.github.com/berakpaijo/", "_blank");
@@ -76,7 +71,6 @@ function speak(sentence) {
 function greetings() {
     var day = new Date();
     var hr = day.getHours();
-
     if(hr >= 0 && hr < 12)       { speak("Morning, darling. What about starting the day with asking me a question?"); }
     else if(hr == 12)            { speak("Workshift? Ahoy! Did you have a good lunch? Becasue I do!"); }
     else if(hr > 12 && hr <= 17) { speak("Back again to work... I didn't know you have time for me!"); }
@@ -94,7 +88,6 @@ const recognition = new SpeechRecognition();
 recognition.onresult = (event) => {
     const current = event.resultIndex;
     const transcript = event.results[current][0].transcript;
-    content.textContent = transcript;
     speakThis(transcript.toLowerCase());
 }
 
@@ -104,6 +97,7 @@ btn.addEventListener('click', ()=>{
 
 /* Custom message */
 function speakThis(message) {
+    window.speechSynthesis.cancel();
     const speech = new SpeechSynthesisUtterance();
     speech.text = "I didn't understand what you said please try again";
 
@@ -207,7 +201,7 @@ function speakThis(message) {
     }
 
     else if (message.includes('date')) {
-        const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric"})
+        const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric", year: "numeric"})
         const finalText = date;
         speech.text = finalText;
     }
@@ -230,17 +224,18 @@ function speakThis(message) {
     window.speechSynthesis.speak(speech);
 }
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function sendMessage() {
     const userInput = document.getElementById('userInput').value;
-    
     if (userInput.trim() === '') return;
-
-    displayMessage('User', userInput);
+    displayMessage('You', userInput);
 
     const botResponse = getBotResponse(userInput);
-    
     setTimeout(() => {
-        displayMessage('Bot', botResponse);
+        displayMessage('Padingo', botResponse);
     }, 1000);
 
     document.getElementById('userInput').value = '';
@@ -253,6 +248,17 @@ function displayMessage(sender, message) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add(sender.toLowerCase());
     messageDiv.textContent = `${sender}: ${message}`;
+    if (sender === 'Padingo') {
+        messageDiv.style.backgroundColor = '#fe8019';
+        messageDiv.style.borderRadius = '8px';
+        messageDiv.style.padding = '10px';
+        messageDiv.style.minWidth = '100px';
+    } else {
+        messageDiv.style.backgroundColor = '#b8bb26';
+        messageDiv.style.borderRadius = '8px';
+        messageDiv.style.padding = '10px';
+        messageDiv.style.minWidth = '100px';
+    }
     
     chatlog.appendChild(messageDiv);
     scrollToBottom();
@@ -270,11 +276,34 @@ function getBotResponse(userMessage) {
         "bye": "Thanks for talking with me, cya soon!",
         "time": new Date().toLocaleString(undefined, {hour: "numeric", minute: "numeric"}),
         "date": new Date().toLocaleString(undefined, {month: "long", day: "numeric", year: "numeric"}),
-        "wikipedia": "Opening Wikipedia",
+        "wikipedia": "Opening Wikipedia.",
+        "github": "Follow our Github page!",
+        "instagram": "Follow our Instagram account!",
+        "youtube": "Subscribe to our YouTube channel!.",
+        "threads": "Follow our Threads page!",
+        "reddit": "Follow our Reddit!",
+        "tiktok": "Follow our TikTok!",
+        "open wikipedia": "Opening Wikipedia.",
+        "open github": "Follow our Github page!",
+        "open instagram": "Follow our Instagram account!",
+        "open youtube": "Subscribe to our YouTube channel!",
+        "open threads": "Follow our Threads page!",
+        "open reddit": "Follow our Reddit!",
+        "open tiktok": "Follow our TikTok!",
         "default": "Here's the answer regarding to the question."
     };
 
     const message = userMessage.toLowerCase();
+
+    if (/^[0-9+\-*/().\s]+$/.test(message)) {
+        try {
+            const result = math.evaluate(message);
+            return `${message} = ${result}`;
+        } catch (e) {
+            return "Sorry, I couldn't calculate that. Please check your input.";
+        }
+    }
+
     const response = responses[message] || responses["default"];
     
     if (response === responses["default"]) {
@@ -284,10 +313,54 @@ function getBotResponse(userMessage) {
         }
         delayDo();
     }
-    if (response === responses["wikipedia"]) {
+    if (response === responses["wikipedia"] || response === responses["open wikipedia"]) {
         async function delayDo() {
             await delay(2000);
             window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "")}`, "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["github"] || response === responses["open github"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.github.com/berakpaijo/", "_blank");
+            window.open("https://www.github.com/Rifky1720/", "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["instagram"] || response === responses["open instagram"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.instagram.com/berakpaijo/", "_blank");
+            window.open("https://www.instagram.com/minyaktelonmaxx", "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["youtube"] || response === responses["open youtube"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.reddit.com/user/LordPaijo/", "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["reddit"] || response === responses["open reddit"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.reddit.com/user/LordPaijo/", "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["threads"] || response === responses["open threads"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.threads.net/@berakpaijo", "_blank");
+        }
+        delayDo();
+    }
+    if (response === responses["tiktok"] || response === responses["open tiktok"]) {
+        async function delayDo() {
+            await delay(2000);
+            window.open("https://www.tiktok.com/@dikasih_info_maszeh?_t=8rUyw3CNqwG&_r=1", "_blank");
         }
         delayDo();
     }
@@ -295,3 +368,4 @@ function getBotResponse(userMessage) {
     return response;
 }
 
+displayMessage('Padingo', 'Hello! My name is Padingo, I\'m your virtual assistant so it\'s my duty to assist you.');

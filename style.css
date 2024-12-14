@@ -31,15 +31,6 @@ body {
   font-weight: bold;
 }
 
-.main .ll {
-  display: flex;
-  justify-content: center;
-  color: #ebdbb2;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 15px;
-}
 
 .main .image-container {
   margin-top: 30px;
@@ -57,43 +48,6 @@ body {
   color: #ebdbb2;
   text-align: center;
   margin-bottom: 40px;
-}
-
-.main .input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40vw;
-  height: 50px;
-  border-radius: 20px;
-  background: #83a598;
-  border: solid 4px;
-  border-color: #8ec07c;
-  cursor: pointer;
-}
-
-.main .input .talk  {
-  background: transparent;
-  outline: none;
-  border: none;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.main .input .talk i {
-  font-size: 25px;
-  color: #fabd2f;
-}
-
-.main .input .content {
-  color: #fabd2f;
-  font-size: 15px;
-  margin-right: 20px;
-  cursor: text;
 }
 
 .main .image-container .sosmed {
@@ -178,6 +132,10 @@ body {
   justify-content: space-between;
 }
 
+#chatbox h2 {
+  position: center;
+}
+
 #chatlog {
   height: 350px;
   overflow-y: auto;
@@ -190,6 +148,11 @@ body {
 
 #chatlog div {
   margin-bottom: 10px;
+  min-width: 100px;
+  max-width: 750px;
+  width: fit-content;
+  display: inline-block;
+  word-wrap: break-word;
 }
 
 #userInput {
@@ -225,6 +188,16 @@ button:hover {
   margin-top: 20px;
 }
 
+.ll {
+  display: flex;
+  justify-content: center;
+  color: #ebdbb2;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
 /* Mobile support */
 
 @media (max-width: 1200px) {
@@ -243,6 +216,34 @@ button:hover {
 
   .main .blog img {
     display: none;
+  }
+
+  .main .blog {
+    width: 88%;
+    font-size: 15px;
+  }
+
+  .main .blog img {
+    display: none;
+  }
+
+  #chatbox {
+    width: 88%;
+    font-size: 15px;
+  }
+
+  #userInput {
+    width: auto;
+    font-size: 12px;
+  }
+
+  #chatlog div {
+    width: 80%;
+  }
+
+  button {
+    width: 40px;
+    font-size: 12px;
   }
 
   .main .ll {
@@ -314,6 +315,10 @@ button:hover {
   #userInput {
     width: auto;
     font-size: 12px;
+  }
+
+  #chatlog div {
+    width: 80%;
   }
 
   button {
