@@ -283,7 +283,7 @@ function getBotResponse(userMessage) {
     }
 
     if (userMessage.startsWith(".echo")) {
-        return userMessage.replace(".console", "").trim().replace(/['"]/g, "");
+        return userMessage.replace(".echo", "").trim().replace(/['"]/g, "");
     }
 
     if (userMessage === ".retrieve") {
