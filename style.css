@@ -236,6 +236,10 @@ button:hover {
     text-align: left; 
   }
 
+  .main .faq-container .faq-content {
+    margin-top: 10px;
+  }
+
   .main .say {
     margin-top: 0.02vw;
     margin-bottom: 30px;
