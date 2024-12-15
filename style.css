@@ -139,36 +139,96 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#chatlog::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chatlog::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px; 
+  border: 2px solid #f1f1f1;
+}
+
+#chatlog::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+#chatlog::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#chatlog::-webkit-scrollbar-track:hover {
+  background: #e0e0e0;
+}
+
+#chatlog::-webkit-scrollbar-corner {
+  background: #f1f1f1;
 }
 
 #chatlog div {
-  margin-bottom: 10px;
+  position: relative;
+  margin-bottom: 5px;
   min-width: 100px;
-  max-width: 750px;
+  max-width: 65%;
   width: fit-content;
-  display: inline-block;
   word-wrap: break-word;
   white-space: pre-wrap;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 15px;
   font-family: 'Roboto Mono', monospace;
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.5;
   text-align: left;
   color: #282828;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .padingo {
   background-color: #fe8019;
   color: #fff;
-  text-align: left;
   align-self: flex-start;
+  border-top-left-radius: 0px;
+}
+
+.padingo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #fe8019;
+  border-bottom: 0;
+  margin-top: 10px;
 }
 
 .user {
   background-color: #b8bb26;
   color: #000;
-  text-align: left;
   align-self: flex-end;
+  border-top-right-radius: 0px;
+}
+
+.user::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #b8bb26;
+  border-bottom: 0;
+  margin-top: 10px;
 }
 
 #userInput {
