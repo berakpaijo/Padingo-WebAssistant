@@ -403,128 +403,61 @@ btn.addEventListener('click', ()=>{
 /* Custom message */
 function speakThis(message) {
     window.speechSynthesis.cancel();
+
     const speech = new SpeechSynthesisUtterance();
-    speech.text = "I didn't understand what you said please try again";
-
-    if (message.includes('hey') || message.includes('hello')) {
-        const finalText = "Hello Boss";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('how are you')) {
-        const finalText = "I'm fine darling, thank you.'";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('name')) {
-        const finalText = "My name is Padingo";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open google')) {
-        window.open("https://google.com", "_blank");
-        const finalText = "Opening Google";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open instagram')) {
-        window.open("https://instagram.com/berakpaijo/", "_blank");
-        const finalText = "Follow me on instagram!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open youtube')) {
-        window.open("https://youtube.com/@LordPaijo", "_blank");
-        const finalText = "Subscribe my YouTube channel!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open facebook')) {
-        window.open("https://facebook.com", "_blank");
-        const finalText = "Opening facebook";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open whatsapp')) {
-        window.open("https://web.whatsapp.com/", "_blank");
-        const finalText = "Opening whatsapp";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open discord')) {
-        window.open("https://discord.com/", "_blank");
-        const finalText = "Opening discord";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open threads') || message.includes('open thread')) {
-        window.open("https://threads.net/@berakpaijo", "_blank");
-        const finalText = "Follow me on threads!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open github')) {
-        window.open("https://github.com/berakpaijo/", "_blank");
-        const finalText = "Follow my github page!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open reddit')) {
-        window.open("https://https://www.reddit.com/user/LordPaijo/", "_blank");
-        const finalText = "Follow my reddit page!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open tiktok')) {
-        window.open("https://https://www.reddit.com/user/LordPaijo/", "_blank");
-        const finalText = "Follow my reddit page!";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('open virtual class')) {
-        window.open("https://virtualclass.smpm12gkb.sch.id/my/");
-        const finalText = "Having some courses, huh?";
-        speech.text = finalText;
-    }
-
-    else if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
-        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
-        const finalText = "This is what i found on internet regarding " + message;
-        speech.text = finalText;
-    }
-
-    else if (message.includes('wikipedia')) {
-        window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "")}`, "_blank");
-        const finalText = "This is what i found on wikipedia regarding " + message;
-        speech.text = finalText;
-    }
-
-    else if (message.includes('time')) {
-        const time = new Date().toLocaleString(undefined, {hour: "numeric", minute: "numeric"})
-        const finalText = time;
-        speech.text = finalText;
-    }
-
-    else if (message.includes('date')) {
-        const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric", year: "numeric"})
-        const finalText = date;
-        speech.text = finalText;
-    }
-
-    else if (message.includes('calculator')) {
-        window.open('Calculator:///')
-        const finalText = "Opening Calculator";
-        speech.text = finalText;
-    }
-
-    else {
-        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
-        const finalText = "I found some information for " + message + " on google";
-        speech.text = finalText;
-    }
-
     speech.volume = 1;
     speech.pitch = 1;
     speech.rate = 1;
-    window.speechSynthesis.speak(speech);
+
+    const openUrl = (url, text) => {
+        window.open(url, "_blank");
+        speech.text = text;
+        window.speechSynthesis.speak(speech);
+    };
+
+    const responses = {
+        'hey': "Hello Boss",
+        'hello': "Hello Boss",
+        'how are you': "I'm fine darling, thank you.",
+        'name': "My name is Padingo",
+        'open google': () => openUrl("https://google.com", "Opening Google"),
+        'open instagram': () => openUrl("https://instagram.com/berakpaijo/", "Follow me on Instagram!"),
+        'open youtube': () => openUrl("https://youtube.com/@LordPaijo", "Subscribe to my YouTube channel!"),
+        'open facebook': () => openUrl("https://facebook.com", "Opening Facebook"),
+        'open whatsapp': () => openUrl("https://web.whatsapp.com/", "Opening WhatsApp"),
+        'open discord': () => openUrl("https://discord.com/", "Opening Discord"),
+        'open threads': () => openUrl("https://threads.net/@berakpaijo", "Follow me on Threads!"),
+        'open github': () => openUrl("https://github.com/berakpaijo/", "Follow my GitHub page!"),
+        'open reddit': () => openUrl("https://www.reddit.com/user/LordPaijo/", "Follow my Reddit page!"),
+        'open tiktok': () => openUrl("https://www.reddit.com/user/LordPaijo/", "Follow my TikTok page!"),
+        'open virtual class': () => openUrl("https://virtualclass.smpm12gkb.sch.id/my/", "Having some courses, huh?"),
+        'calculator': () => openUrl('Calculator://', "Opening Calculator"),
+    };
+
+    for (const [key, value] of Object.entries(responses)) {
+        if (message.includes(key)) {
+            if (typeof value === 'function') {
+                value();
+                return;
+            } else {
+                speech.text = value;
+                window.speechSynthesis.speak(speech);
+                return;
+            }
+        }
+    }
+
+    if (message.includes('what is') || message.includes('who is') || message.includes('what are')) {
+        openUrl(`https://www.google.com/search?q=${message.replace(" ", "+")}`, `This is what I found on the internet regarding "${message}"`);
+    } else if (message.includes('wikipedia')) {
+        openUrl(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "").trim()}`, `This is what I found on Wikipedia regarding "${message}"`);
+    } else if (message.includes('time')) {
+        speech.text = new Date().toLocaleString(undefined, { hour: "numeric", minute: "numeric" });
+        window.speechSynthesis.speak(speech);
+    } else if (message.includes('date')) {
+        speech.text = new Date().toLocaleString(undefined, { month: "short", day: "numeric", year: "numeric" });
+        window.speechSynthesis.speak(speech);
+    } else {
+        openUrl(`https://www.google.com/search?q=${message.replace(" ", "+")}`, `I found some information for "${message}" on Google`);
+    }
 }
