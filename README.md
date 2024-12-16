@@ -3,135 +3,77 @@
 
   ![](https://github.com/berakpaijo/Padingo-WebAssistant/blob/main/screenshots/ss-0.jpeg)
 
-  ![](https://github.com/berakpaijo/Padingo-WebAssistant/blob/main/screenshots/ss-1.jpeg)
+  ## Requirements
+  - A WebKit-supported browser
+  - Speech-Dispatcher
+  - Speech-Dispatcher-Utils
 
-  ## DOCUMENTATION
+  ## Documentation
+  ### HTML
+  You can edit the base of Padingo by editing the `index.html` file. To be honest with you, I don't think you need to do this. However, I can show you a list of the classes and IDs.
 
-  ### A YouTube video of testing the project
-  [![youtube video](https://img.youtube.com/vi/eeAdXy7NGGU/0.jpg)](https://www.youtube.com/watch?v=eeAdXy7NGGU)
-  
-  ### REQUIREMENTS
-    - A browser with working text-to-speech.
-    - Any code editor that.
-    - Live/Local server.
-
-  Let's start by cloning the repo,
-  ```bash
-  git clone https://github.com/berakpaijo/Padingo-WebAssistant.git  # HTTP
-  git clone git@github.com:berakpaijo/Padingo-WebAssistant.git      # SSH
-  ```
-
-  then change the directory to `Padingo-WebAssistant/`.
-  ```bash
-  cd Padingo-WebAssistant/
-  ```
-
-  And now we can start coding!
-
-  ### CLASSES
-  The list of all the classes inside `index.html`.
+  Here's the list of the classes and IDs:
 
   ```html
-  "main"                  <!-- The entirity of screen -->
-  "image-container"       <!-- Container to render images, texts, and buttons -->
-  "input"                 <!-- The speak button class -->
-  "talk"                  <!-- The microphone button inside "input" -->
-  "content"               <!-- User's recorded dialog text inside "input" -->
-  "sosmed"                <!-- Social media links -->
-  "say"                   <!-- A hint on how to use Padingo -->
-  "faq-container"         <!-- Container for faqs -->
-  "faq-content"           <!-- Content of the faqs in "faq-container" -->
-  "ll"                    <!-- Names of creators -->
+  class main            -> main
+  class image-container -> container for the images, links, and the title
+  class sosmed  -> social media links
+  class say     -> the hint on how to use Padingo
+  class faq-container -> container for the faqs
+  class faq-content   -> the contents of faqs (about, documentation, how to use)
+  id chatbox -> container for the chatbot
+  id chatlog -> container for the chats
+  class talk -> the damn microphone button
   ```
 
-  ### Styling
-  Style with your own desire! You can style the website by editing the `style.css` file.
+  ### CSS
+  Reading the CSS file might be confusing so uh... I guess here's another list. I mean styling is a crucial thing so yeah, here's another list of classes and IDs that you might want to edit:
 
   ```css
-  .main                                     /* main */
-  .main .say                                /* the say class to show hint on how to use Padingo */
-  .main .ll                                 /* credits for the developers */
-  .main .image-container                    /* image-container class to render main parts */
-  .main .image-container h1                 /* Padingo logo/title */
-  .main .image-container p                  /* description about Padingo */
-  .main .input                              /* speak button */
-  .main .input .talk                        /* microphone button inside "input" */
-  .main .input .talk i                      /* the microphone logo inside the microphone button */
-  .main .input .content                     /* user's recorded dialog */
-  .main .image-container .sosmed            /* social media links */
-  .main .image-container .sosmed button     /* buttons to redirect into social media pages */
-  .main .faq-container                      /* containing faq contents */
-  .main .faq-container .faq-content         /* faq contents */
-  .main .faq-container .faq-content a       /* links inside the faq contents */
+  .main
+  .main .image-container
+  .main .image-container .sosmed
+  .main .faq-container
+  .main .faq-container .faq-content
+  #chatbox
+  #chatlog && #chatlog div
+  #userinput
+  #chatbuttons
+  .padingo && .padingo::after
+  .usre && .user::after
+  button
   ```
 
-  ### Scripting
-  Rewrite the code on your own behalf... don't be scared about it. Edit the code on `script.js` and find your ways of liking.
+  ### JAVASCRIPT
+  Now this one is tricky, but I'm sure you're already familiar with how things work here. I'll just point out which part of the code you might want to edit.
 
-  Most of the parts of the code that you want to reconfigure are such as, `speak()`, `greetings()`, and `speakThis()`.
+  First is the `getBotResponse()` function. It has one argument, `userMessage`, and to match the argument with the available messages the bot can understand you can add your desired commands to the `responses` array within the function.
 
-  ```JavaScript
-  function speak(sentence) {
-    /* ... */
-    text_speak.rate = /* Your voice rate */;
-    text_speak.pitch = /* Your voice pitch */;
-    /* ... */
+  ```javascript
+  function getBotResponse(userMessage) {
+    const responses = {
+      "<YOUR MESSAGE>":"<THE OUTPUT THAT WILL GET RETURNED (could be anything including functions)>",
+    }
   }
+  ```
 
-  function greetings() {
-    /* ... */
+  Second is the `speakThis()` function. It also has one argument called `message`, and to match the argument... you pretty much do the same thing as what you did before.
 
-    if (hr >= 0 && hr < 12)       { speak(/* Your message */); }
-    else if (hr == 12)            { speak(/* Your message */); }
-    else if (hr > 12 && hr <= 17) { speak(/* Your message */); }
-    else if (hr > 17 && hr <= 21) { speak(/* Your message */); }
-    else { speak(/* Your message */); }
-  }
-
+  ```javascript
   function speakThis(message) {
-    /* ... */
-
-    /* Greetings, Time, and Date */
-    // 72
-    if (message.includes(/* Any greeting methods, say like hello or hi */)) {
-      const finalText = "Hello Boss"; /* Change this to anything, really */
-      speech.text = finalText;
+    const responses = {
+      "<YOUR MESSAGE>":"<THE OUTPUT THAT WILL GET RETURNED (could be anything including functions)>",
     }
-
-    // 153
-    else if (message.includes('time')) {
-      const time = new Date().toLocaleString(undefined, {hour: "numeric", minute: "numeric"})
-      const finalText = time;
-      speech.text = finalText;
-    }
-
-    // 159
-    else if (message.includes('date')) {
-      const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric"})
-      const finalText = date;
-      speech.text = finalText;
-    }
-
-    /* Opening Websites */
-    else if (message.includes('open <website\'s name>')) {
-      window.open("<Link to the website>", "_blank");
-      const finalText = "Opening <The website>";
-      speech.text = finalText;
-    }
-
-    /* ... */
   }
   ```
 
-  All done, you can now run your already tweaked version of Padingo!
+  And there you have it, the not ultimate guide to style Padingo! (why would I even make this)
 
-  ## Finishing
-  Run the project on a live/local server.
+  ## More About
+  Thanks for reading the [documentation](##Documentation), I appreciate your appreciation of my small and simple project. It's nothing much, but I've sworn to myself that I will do something better and bigger in the future. Fork all the way you want, contribute if you'd like to, and give it a comment!
 
-  The project's deployed website is [padingo-webassistant.netlify.app](https://padingo-webassistant.netlify.app)
-
-  Thank you for reading the entire documentation and using the project! There will be no license since this project is just a simple project. I made it open-source because I want people to not only use the already finished product but also the entirety of the codebase. This project is made for a coding competition in Indonesia that focuses on high school, junior high school, and elementary school.
-
+  Visit the fully published project [here](https://padingo-webassistant.vercel.app).
+  
   credits: [@azzamalfaruq062](https://github.com/azzamalfaruq062) [@reddevill007](https://github.com/reddevill007/reddevill007) [@rifky1720](https://github.com/rifky1720)
 
 
