@@ -141,9 +141,9 @@ body {
   flex-direction: column;
   gap: 10px;
 
-    /* Custom scrollbar styling */
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
 #chatlog::-webkit-scrollbar {
@@ -244,17 +244,6 @@ body {
 #chatButtons {
   flex-direction: row;
   justify-content: space-between;
-}
-
-.padingo {
-  background-color: #fe8019;
-  align-self: flex-start;
-}
-
-.user {
-  background-color: #b8bb26;
-  align-self: flex-end;
-  text-align: right;
 }
 
 button {
