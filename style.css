@@ -28,6 +28,7 @@ body {
   margin-bottom: 20px;
   color: #ebdbb2;
   font-weight: bold;
+  animation: fadeIn 2s ease-in-out;
 }
 
 
@@ -41,18 +42,21 @@ body {
   text-align: center;
   margin-bottom: 10px;
   font-size: 75px;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .main .image-container p {
   color: #ebdbb2;
   text-align: center;
   margin-bottom: 40px;
+  animation: fadeIn 1.8s ease-in-out;
 }
 
 .main .image-container .sosmed {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 3s ease-in-out;
 }
 
 .main .image-container .sosmed button {
@@ -73,6 +77,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 4s ease-in-out;
 }
 
 .main .faq-container .faq-content {
@@ -110,6 +115,7 @@ body {
   font-size: 16px;
   width: 100%;
   text-align: left; 
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .main .blog img {
@@ -129,6 +135,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 #chatlog {
@@ -196,6 +203,8 @@ body {
   color: #fff;
   align-self: flex-start;
   border-top-left-radius: 0px;
+  position: relative; /* Required for ::after */
+  animation: popOut 0.4s ease-out; /* Apply the animation */
 }
 
 .padingo::after {
@@ -211,11 +220,14 @@ body {
   margin-top: 10px;
 }
 
+/* User Chat Bubble */
 .user {
   background-color: #b8bb26;
   color: #000;
   align-self: flex-end;
   border-top-right-radius: 0px;
+  position: relative; /* Required for ::after */
+  animation: popOut 0.4s ease-out; /* Apply the animation */
 }
 
 .user::after {
@@ -272,6 +284,31 @@ button:hover {
   margin-top: 40px;
   margin-bottom: 20px;
   font-size: 15px;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Mobile support */

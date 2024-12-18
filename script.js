@@ -273,6 +273,13 @@ function getBotResponse(userMessage) {
     return response;
 }
 
+document.getElementById("userInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
 let lastConsoledMessage = '';
 
 function openLink(url) {
