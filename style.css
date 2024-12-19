@@ -129,13 +129,14 @@ body {
   width: 100%;
   background-color: #fbf1c7;
   border-radius: 10px;
-  border: solid 8px #8ec07c; 
+  border: solid 8px #8ec07c;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  animation: fadeIn 1.5s ease-in-out;
+  opacity: 0%;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
 
 #chatlog {
@@ -203,8 +204,8 @@ body {
   color: #fff;
   align-self: flex-start;
   border-top-left-radius: 0px;
-  position: relative; /* Required for ::after */
-  animation: popOut 0.4s ease-out; /* Apply the animation */
+  position: relative;
+  
 }
 
 .padingo::after {
@@ -220,14 +221,13 @@ body {
   margin-top: 10px;
 }
 
-/* User Chat Bubble */
 .user {
   background-color: #b8bb26;
   color: #000;
   align-self: flex-end;
   border-top-right-radius: 0px;
-  position: relative; /* Required for ::after */
-  animation: popOut 0.4s ease-out; /* Apply the animation */
+  position: relative;
+  
 }
 
 .user::after {

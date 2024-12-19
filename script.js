@@ -57,6 +57,7 @@ function sendMessage() {
 
 function displayMessage(sender, message) {
     const chatlog = document.getElementById('chatlog');
+    const chatbox = document.getElementById('chatbox'); // The chat container
     const messageDiv = document.createElement('div');
 
     if (sender === 'Padingo') messageDiv.classList.add('padingo');
@@ -65,6 +66,14 @@ function displayMessage(sender, message) {
     messageDiv.textContent = `${sender}: ${message}`;
     chatlog.appendChild(messageDiv);
     chatlog.scrollTop = chatlog.scrollHeight;
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            messageDiv.style.animation = "popOut 0.4s ease-out";
+            observer.disconnect();
+        }
+    });
+    observer.observe(chatbox);
 }
 
 
