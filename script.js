@@ -116,6 +116,8 @@ function getBotResponse(userMessage) {
         "tell me something cool": "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are still edible!",
         "give me a compliment": "You’re doing an amazing job! Keep being awesome.",
         "what’s the meaning of life?": "I think it’s all about being kind, learning, and having fun!",
+        "where did you come from?": "The source code!",
+        "where did you come from": "The source code!",
 
         "time": new Date().toLocaleString(undefined, { hour: "numeric", minute: "numeric" }),
         "date": new Date().toLocaleString(undefined, { month: "long", day: "numeric", year: "numeric" }),
@@ -160,13 +162,14 @@ function getBotResponse(userMessage) {
         "default": "Here's the answer regarding the question."
     };
     
-    const message = userMessage.toLowerCase();
+    const message = userMessage.trim().toLowerCase();
 
     if (["rock", "paper", "scissors"].includes(message)) {
         return playRockPaperScissors(message);
     }
 
-    const response = responses[message] || responses["default"];
+    const responseKey = Object.keys(responses).find(key => message.includes(key));
+    const response = responseKey ? responses[responseKey] : responses["default"];
 
     if (response === responses["default"] && !message.startsWith(".") && !(/^[0-9+\-*/().\s]+$/.test(message))) {
         async function delayDo() {
@@ -182,56 +185,55 @@ function getBotResponse(userMessage) {
     }
 
     function listAvailableCommands() {
-        const greetings = [
-            "hello", "hi", "bye"
-        ];
-        
+        const greetings = ["hello", "hi", "bye"];
         const questions = [
-            "who are you?", "what's your name?", "where are you?", "how are you?", "do you have a family?", "how old are you?", "are you a robot?", "where do you live?", "what’s the meaning of life?"
+            "who are you?", "what's your name?", "where are you?", "how are you?", 
+            "do you have a family?", "how old are you?", "are you a robot?", 
+            "where do you live?", "what’s the meaning of life?"
         ];
-        
         const compliments = [
             "you're good looking", "do you like me?", "give me a compliment"
         ];
-        
         const funFacts = [
-            "what is your favorite color?", "what is your favorite food?", "do you sleep?", "can you tell me a joke?", "can you sing?", "are you smart?", "what’s your favorite animal?", "tell me something cool"
+            "what is your favorite color?", "what is your favorite food?", 
+            "do you sleep?", "can you tell me a joke?", "can you sing?", 
+            "are you smart?", "what’s your favorite animal?", "tell me something cool"
         ];
-    
+        const funGames = [
+            "flip a coin", "roll a dice", "guess the number", "spin the wheel",
+            "rock", "paper", "scissors"
+        ];
+        const specialCommands = [
+            ".list -- shows the list all the special commands.", ".man -- shows the manual on how to use the special commands."
+        ];
+        
         const commandsGrouped = {
             "Greetings": greetings,
             "Questions": questions,
             "Compliments": compliments,
-            "Fun Facts": funFacts
+            "Fun Facts": funFacts,
+            "Games": funGames,
+            "Special Commands": specialCommands
         };
     
-        const gameCommands = Object.keys(responses)
-            .filter(command => typeof responses[command] === 'function' && command !== '.help' && command !== '.getpwd' && command !== '.getstr' && command !== '.getchar' && command !== '.list' && command !== '.man')
-            .join("\n");
+        let responseMessage = `
+            Padingo is a web-based digital assistant that uses the Speech Synthesis API. 
+            Make sure your browser is in its finest condition; otherwise, you might have a bad experience.
     
-        let normalCommandsMessage = "";
+            Padingo has some built-in interaction starters. Here's the list:
+        `;
+    
         for (const category in commandsGrouped) {
-            normalCommandsMessage += `${category}:\n${commandsGrouped[category].join("\n")}\n\n`;
+            responseMessage += `\n${category}:\n`;
+            responseMessage += commandsGrouped[category].join("\n") + "\n";
         }
     
-        const responseMessage =
-            "\n\nPadingo is a web-based digital assistant, that uses the Speech Synthesys API. Make sure your browser is in its finest condition otherwise, you will have a bad experience\n\n" +
-    
-            "Padingo has some built-in interaction starters, here's the list:\n\n" +
-    
-            `${normalCommandsMessage}` +
-    
-            "Games:\n" +
-            `${gameCommands}\n\n` +
-    
-            "Special Commands:\n" +
-            "\t.list\n" +
-            "\t.man\n\n" +
-    
-            "Use \".help\" to get this list again.";
+        responseMessage += `
+            Use ".help" to get this list again.
+        `;
     
         return responseMessage;
-    }    
+    }
 
     if (/^[0-9+\-*/().\s]+$/.test(message)) {
         try { return `${message} = ${math.evaluate(message)}`; } 
